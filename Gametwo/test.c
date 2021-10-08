@@ -2,8 +2,8 @@
 
 void game()
 {
-	char mine[ROWS][COLS] = { 0 };//雷区
-	char exposure[ROWS][COLS] = { 0 };//排查出的雷区
+	char mine[ROWS][COLS] = { 0 };//mines
+	char exposure[ROWS][COLS] = { 0 };//exposure mines
 	Initboard(mine,ROWS, COLS, '0');
 	Initboard(exposure, ROWS, COLS, '*');
 
@@ -27,7 +27,7 @@ void menu()
 int main()
 {
 	int input = 0;
-	srand((unsigned int)time(NULL));//根据时间进行随机生成数
+	srand((unsigned int)time(NULL));//accoring to time to create random nums
 	do
 	{		
 		menu();
@@ -35,15 +35,15 @@ int main()
 		switch (input)
 		{
 		case 1:
-			printf("扫雷!\n");
+			printf("FInd MIne!\n");
 			game();
 			break;
 		case 0:
-			printf("退出!\n");
+			printf("exit!\n");
 			exit(0);
 			break;
 		default:
-			printf("输入有误,重新输入!\n");
+			printf("Wrong!Please input again!\n");
 			break;
 		}
 
