@@ -15,7 +15,7 @@ void Initboard(char board[ROWS][COLS], int row, int col, char ch)
 //Print playing board
 void printboard(char board[ROWS][COLS], int row, int col)
 {
-	for (int i = 0; i < row; i++)
+	for (int i = 0; i <= row; i++)
 	{
 		printf("%d ", i);
 	}
@@ -23,10 +23,10 @@ void printboard(char board[ROWS][COLS], int row, int col)
 	printf("\n");
 
 
-	for (int i = 1; i < row; i++)
+	for (int i = 1; i <= row; i++)
 	{
 		printf("%d ", i);
-		for (int j = 1; j < col; j++)
+		for (int j = 1; j <= col; j++)
 		{
 			printf("%c ", board[i][j]);
 		}
@@ -50,8 +50,8 @@ int judgeMineNum(char mine[ROWS][COLS], int row, int col)
 void FindMine(char mine[ROWS][COLS], char exposure[ROWS][COLS], int row, int col)
 {
 	int m, n;
-	
-	while (1)
+	int win=0;
+	while (win<row*col-MINECOUNT)
 	{
 		printf("[");
 		scanf_s("%d,%d", &m, &n);
@@ -77,12 +77,17 @@ void FindMine(char mine[ROWS][COLS], char exposure[ROWS][COLS], int row, int col
 		}
 	}
 	
+	if(win==row*col-MINECOUNT)
+	{
+		printf("Congratulations,You win!\n");
+	}
+	
 }
 
 //Set mines in your playing board
 void SetMine(char mine[ROWS][COLS], int row, int col)
 {
-	int count = 10;
+	int count = MINECOUNT;
 
 	while (count)
 	{
