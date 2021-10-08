@@ -7,13 +7,13 @@ void game()
 	Initboard(mine,ROWS, COLS, '0');
 	Initboard(exposure, ROWS, COLS, '*');
 
-	printboard(exposure, ROWS, COLS);
+	printboard(exposure, ROW, COL);
 
 	SetMine(mine,ROW,COL);
 
 	FindMine(mine,exposure,ROWS,COLS);
 	
-	//printboard(exposure, ROWS, COLS);
+	//printboard(exposure, ROW, COL);
 }
 
 void menu()
