@@ -1,5 +1,6 @@
 #include"game.h"
 
+//Init playing board
 void Initboard(char board[ROWS][COLS], int row, int col, char ch)
 {
 	for (int i = 0; i < row; i++)
@@ -11,6 +12,7 @@ void Initboard(char board[ROWS][COLS], int row, int col, char ch)
 	}
 }
 
+//Print playing board
 void printboard(char board[ROWS][COLS], int row, int col)
 {
 	for (int i = 0; i < row; i++)
@@ -31,7 +33,7 @@ void printboard(char board[ROWS][COLS], int row, int col)
 		printf("\n");
 	}
 }
-//判断附近的雷的数目
+//judge Mines' Num around
 int judgeMineNum(char mine[ROWS][COLS], int row, int col)
 {
 	int count = 0;
@@ -44,21 +46,21 @@ int judgeMineNum(char mine[ROWS][COLS], int row, int col)
 
 	return count;
 }
-//排查雷
+//Find mine
 void FindMine(char mine[ROWS][COLS], char exposure[ROWS][COLS], int row, int col)
 {
 	int m, n;
 	
 	while (1)
 	{
-		printf("输入排查坐标>");
-		scanf_s("%d%d", &m, &n);
-
+		printf("[");
+		scanf_s("%d,%d", &m, &n);
+		printf("]");
 		if (m >= 1 && m <= row && n >= 1 && n <= col)
 		{
 			if (mine[m][n] == '1')
 			{
-				printf("菜,你被炸死了\n");
+				printf("You are unlucky\n");
 				printboard(mine,row,col);
 				break;
 			}
@@ -71,13 +73,13 @@ void FindMine(char mine[ROWS][COLS], char exposure[ROWS][COLS], int row, int col
 		}
 		else
 		{
-			printf("请输入正确的坐标!\n");
+			printf("Print right pos please!\n");
 		}
 	}
 	
 }
 
-//设置雷
+//Set mines in your playing board
 void SetMine(char mine[ROWS][COLS], int row, int col)
 {
 	int count = 10;
@@ -87,9 +89,9 @@ void SetMine(char mine[ROWS][COLS], int row, int col)
 		int x = rand() % row + 1;
 		int y = rand() % row + 1;		
 
-		if (mine[x][y]=='0')//如果没有雷
+		if (mine[x][y]=='0')//'0'means there isn't a mine
 		{
-			mine[x][y] = '1';//放雷
+			mine[x][y] = '1';//'1'means there is a mine
 			count--;
 		}
 	}
